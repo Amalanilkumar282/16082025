@@ -1,3 +1,17 @@
+// Delete all posts function
+function deleteAllPosts() {
+    if (confirm('Are you sure you want to delete all posts?')) {
+        localStorage.removeItem('posts');
+        posts = [];
+        displayPosts();
+    }
+}
+
+// Attach event listener for delete all button
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('deleteAllBtn');
+    if (btn) btn.onclick = deleteAllPosts;
+});
 // Initialize posts array from localStorage or empty array if none exists
 let posts = [];
 try {
