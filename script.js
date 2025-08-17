@@ -47,22 +47,22 @@ function addPost(post) {
 function displayPosts() {
     const postBody = document.getElementById("postBody");
     if (postBody) {
-        // Initialize empty string to accumulate table rows
         let tableRows = '';
-        // Use forEach to iterate through all posts and build HTML
-        posts.forEach(post => {
-            // Concatenate each post as a table row with edit and delete buttons
-            tableRows += `
-                <tr>
-                    <td>${post.id}</td>
-                    <td>${post.content}</td>
-                    <td>
-                        <button onclick="editPost('${post.id}')" title="Edit">✏️</button>
-                        <button onclick="deletePost('${post.id}')" title="Delete">🗑️</button>
-                    </td>
-                </tr>`;
-        });
-        // Set the accumulated HTML string to the table body
+        if (posts.length === 0) {
+            tableRows = '<tr><td colspan="3" style="text-align:center;">No post</td></tr>';
+        } else {
+            posts.forEach(post => {
+                tableRows += `
+                    <tr>
+                        <td>${post.id}</td>
+                        <td>${post.content}</td>
+                        <td>
+                            <button onclick="editPost('${post.id}')" title="Edit">✏️</button>
+                            <button onclick="deletePost('${post.id}')" title="Delete">🗑️</button>
+                        </td>
+                    </tr>`;
+            });
+        }
         postBody.innerHTML = tableRows;
     }
 }
