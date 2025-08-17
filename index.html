@@ -3,34 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts Management</title>
+    <title>Posts Management System</title>
 </head>
 <body>
     <header>
-        <h1>Posts Management</h1>
+        <center>
+            <h1>📝 Posts Management System</h1>
+            <hr width="80%">
+        </center>
     </header>
     
     <main>
-        <section>
-            <button id="addPostButton" type="button" onclick="window.location.href='addPost.html'">
-                Add New Post
-            </button>
-        </section>
-        
-        <section>
-            <table id="postTable" border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Post Content</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="postBody">
-                    <!-- Posts will be loaded here -->
-                </tbody>
-            </table>
-        </section>
+        <center>
+            <section>
+                <fieldset>
+                    <legend><strong>Quick Actions</strong></legend>
+                    <p>
+                        <button id="addPostButton" type="button" onclick="window.location.href='addPost.html'">
+                            ➕ Add New Post
+                        </button>
+                    </p>
+                </fieldset>
+            </section>
+            
+            <br>
+            
+            <section>
+                <fieldset>
+                    <legend><strong>Posts Overview</strong></legend>
+                    <table id="postTable" border="2" cellpadding="8" cellspacing="0" width="90%">
+                        <thead>
+                            <tr>
+                                <th width="15%"><strong>Post ID</strong></th>
+                                <th width="60%"><strong>Post Content</strong></th>
+                                <th width="25%"><strong>Actions</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody id="postBody">
+                            <!-- Posts will be loaded here -->
+                        </tbody>
+                    </table>
+                </fieldset>
+            </section>
+        </center>
     </main>
     
     <script src="script.js"></script>
