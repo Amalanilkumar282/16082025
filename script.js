@@ -4,6 +4,7 @@ function deleteAllPosts() {
         localStorage.removeItem('posts');
         posts = [];
         displayPosts();
+    alert('All posts have been cleared.');
     }
 }
 
@@ -34,6 +35,7 @@ function addPost(post) {
             posts[index] = { id: post.id, content: post.content };
             try {
                 localStorage.setItem('posts', JSON.stringify(posts));
+                alert('Post updated successfully.');
             } catch (error) {
                 console.error('Error saving posts to localStorage:', error);
                 alert('Failed to save post. Please try again.');
@@ -65,6 +67,7 @@ function addPost(post) {
         posts.push(post);
         try {
             localStorage.setItem('posts', JSON.stringify(posts));
+            alert('Post created successfully.');
         } catch (error) {
             console.error('Error saving posts to localStorage:', error);
             alert('Failed to save post. Please try again.');
@@ -102,6 +105,7 @@ function deletePost(postId) {
         posts = posts.filter(post => post.id !== postId);
         try {
             localStorage.setItem('posts', JSON.stringify(posts));
+            alert('Post deleted successfully.');
         } catch (error) {
             console.error('Error saving posts to localStorage:', error);
             alert('Failed to delete post. Please try again.');
