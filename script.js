@@ -1,5 +1,12 @@
 // Initialize posts array from localStorage or empty array if none exists
-let posts = JSON.parse(localStorage.getItem('posts')) || [];
+let posts = [];
+try {
+    const storedPosts = localStorage.getItem('posts');
+    posts = storedPosts ? JSON.parse(storedPosts) : [];
+} catch (error) {
+    console.error('Error loading posts from localStorage:', error);
+    posts = [];
+}
 
 function addPost(post) {
     // Get URL parameters to check if we're editing
@@ -11,7 +18,13 @@ function addPost(post) {
         const index = posts.findIndex(p => p.id === editId);
         if (index !== -1) {
             posts[index] = { id: post.id, content: post.content };
-            localStorage.setItem('posts', JSON.stringify(posts));
+            try {
+                localStorage.setItem('posts', JSON.stringify(posts));
+            } catch (error) {
+                console.error('Error saving posts to localStorage:', error);
+                alert('Failed to save post. Please try again.');
+                return false;
+            }
             return true;
         }
         return false;
@@ -19,7 +32,6 @@ function addPost(post) {
         // Add new post (existing logic)
         let idExists = false;
         let contentExists = false;
-        
         posts.forEach(p => {
             if (p.id === post.id) {
                 idExists = true;
@@ -28,7 +40,6 @@ function addPost(post) {
                 contentExists = true;
             }
         });
-        
         if (idExists) {
             alert('ID already exists!');
             return false;
@@ -37,9 +48,14 @@ function addPost(post) {
             alert('Content already exists!');
             return false;
         }
-        
         posts.push(post);
-        localStorage.setItem('posts', JSON.stringify(posts));
+        try {
+            localStorage.setItem('posts', JSON.stringify(posts));
+        } catch (error) {
+            console.error('Error saving posts to localStorage:', error);
+            alert('Failed to save post. Please try again.');
+            return false;
+        }
         return true;
     }
 }
@@ -70,7 +86,13 @@ function displayPosts() {
 function deletePost(postId) {
     if (confirm('Are you sure you want to delete this post?')) {
         posts = posts.filter(post => post.id !== postId);
-        localStorage.setItem('posts', JSON.stringify(posts));
+        try {
+            localStorage.setItem('posts', JSON.stringify(posts));
+        } catch (error) {
+            console.error('Error saving posts to localStorage:', error);
+            alert('Failed to delete post. Please try again.');
+            return;
+        }
         displayPosts();
     }
 }
