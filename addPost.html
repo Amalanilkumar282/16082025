@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Post</title>
+</head>
+<body>
+    <header>
+        <h1>Add New Post</h1>
+    </header>
+    
+    <main>
+        <form id="addPostForm">
+            <fieldset>
+                <legend>Post Information</legend>
+                
+                <p>
+                    <label for="postId">Post ID:</label><br>
+                    <input type="text" id="postId" name="postId" required 
+                           placeholder="Enter unique post ID">
+                </p>
+                
+                <p>
+                    <label for="postContent">Post Content:</label><br>
+                    <textarea id="postContent" name="postContent" required 
+                              rows="5" cols="50" 
+                              placeholder="Enter your post content here..."></textarea>
+                </p>
+                
+                <p>
+                    <button type="submit">Save Post</button>
+                    <button type="button" onclick="window.location.href='index.html'">
+                        Cancel
+                    </button>
+                </p>
+            </fieldset>
+        </form>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
