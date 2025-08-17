@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const post = getPostById(editId);
             if (post) {
                 document.getElementById("postId").value = post.id;
+                document.getElementById("postId").readOnly = true; // Make ID non-editable
                 document.getElementById("postContent").value = post.content;
                 document.querySelector('button[type="submit"]').textContent = 'Update Post';
                 document.querySelector('legend').textContent = 'Edit Post Information';
