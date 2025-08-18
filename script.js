@@ -24,6 +24,10 @@ try {
 }
 
 function addPost(post) {
+    if (isNaN(post.id) || post.id.trim() === "") {
+        alert('ID must be a number.');
+        return false;
+    }
     // Get URL parameters to check if we're editing
     const urlParams = new URLSearchParams(window.location.search);
     const editId = urlParams.get('edit');
@@ -150,6 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const id = document.getElementById("postId").value;
             const content = document.getElementById("postContent").value;
+            if (isNaN(id) || id.trim() === "") {
+                alert("ID must be a number.");
+                return;
+            }
             
             const urlParams = new URLSearchParams(window.location.search);
             const editId = urlParams.get('edit');
