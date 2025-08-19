@@ -8,7 +8,7 @@
 <body>
     <header>
         <center>
-            <h1>✍️ Add New Post</h1>
+            <h1>✏️ Add New Post</h1>
             <hr width="60%">
         </center>
     </header>
@@ -47,7 +47,7 @@
                             <td colspan="2" align="center">
                                 <hr width="80%">
                                 <p>
-                                    <button type="submit"><strong>💾 Save Post</strong></button>
+                                    <button type="submit" id="submitBtn"><strong>💾 Save Post</strong></button>
                                     &nbsp;&nbsp;&nbsp;
                                     <button type="button" onclick="window.location.href='index.html'">
                                         <strong>🔙 Cancel</strong>
@@ -58,6 +58,11 @@
                     </table>
                 </fieldset>
             </form>
+            
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" style="display: none;">
+                <p><em>Processing...</em></p>
+            </div>
         </center>
     </main>
     

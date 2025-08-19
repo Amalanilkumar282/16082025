@@ -22,12 +22,18 @@
                         <button id="addPostButton" type="button" onclick="window.location.href='addPost.html'">
                             ➕ Add New Post
                         </button>
-                            <button id="deleteAllBtn" type="button">🗑️ Delete All Posts</button>
+                        <button id="deleteAllBtn" type="button">🗑️ Delete All Posts</button>
+                        <button id="refreshBtn" type="button">🔄 Refresh Posts</button>
                     </p>
                 </fieldset>
             </section>
             
             <br>
+            
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" style="display: none;">
+                <p><em>Loading posts...</em></p>
+            </div>
             
             <section>
                 <fieldset>
