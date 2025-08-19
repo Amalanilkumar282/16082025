@@ -5,13 +5,8 @@ const FIREBASE_URL = 'https://post-management-e07c2-default-rtdb.asia-southeast1
 async function fetchPosts() {
     try {
         showLoading(true);
-        const response = await fetch(`${FIREBASE_URL}/posts.json`);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+    const response = await axios.get(`${FIREBASE_URL}/posts.json`);
+    const data = response.data;
         
         if (data === null) {
             return [];
@@ -38,24 +33,12 @@ async function savePost(post) {
     try {
         showLoading(true);
         
-        const response = await fetch(`${FIREBASE_URL}/posts.json`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: post.id,
-                content: post.content,
-                timestamp: Date.now()
-            })
+        const response = await axios.post(`${FIREBASE_URL}/posts.json`, {
+            id: post.id,
+            content: post.content,
+            timestamp: Date.now()
         });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        return result.name; // Firebase returns the generated key
+        return response.data.name; // Firebase returns the generated key
     } catch (error) {
         console.error('Error saving post:', error);
         throw error;
@@ -68,22 +51,11 @@ async function updatePost(firebaseKey, post) {
     try {
         showLoading(true);
         
-        const response = await fetch(`${FIREBASE_URL}/posts/${firebaseKey}.json`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: post.id,
-                content: post.content,
-                timestamp: Date.now()
-            })
+        await axios.put(`${FIREBASE_URL}/posts/${firebaseKey}.json`, {
+            id: post.id,
+            content: post.content,
+            timestamp: Date.now()
         });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
         return true;
     } catch (error) {
         console.error('Error updating post:', error);
@@ -97,15 +69,8 @@ async function deletePostFromFirebase(firebaseKey) {
     try {
         showLoading(true);
         
-        const response = await fetch(`${FIREBASE_URL}/posts/${firebaseKey}.json`, {
-            method: 'DELETE'
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        return true;
+    await axios.delete(`${FIREBASE_URL}/posts/${firebaseKey}.json`);
+    return true;
     } catch (error) {
         console.error('Error deleting post:', error);
         throw error;
@@ -118,15 +83,8 @@ async function deleteAllPostsFromFirebase() {
     try {
         showLoading(true);
         
-        const response = await fetch(`${FIREBASE_URL}/posts.json`, {
-            method: 'DELETE'
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        return true;
+    await axios.delete(`${FIREBASE_URL}/posts.json`);
+    return true;
     } catch (error) {
         console.error('Error deleting all posts:', error);
         throw error;
