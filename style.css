@@ -1,0 +1,127 @@
+/* style.css - Professional & Modern Look */
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+    padding: 32px 40px 40px 40px;
+}
+
+h1, legend {
+    color: #1a237e;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+input[type="text"], textarea {
+    padding: 10px 14px;
+    border: 1.5px solid #b0bec5;
+    border-radius: 7px;
+    font-size: 1rem;
+    background: #f5f7fa;
+    transition: border 0.2s;
+}
+input[type="text"]:focus, textarea:focus {
+    border: 1.5px solid #3949ab;
+    outline: none;
+    background: #fff;
+}
+
+button {
+    background: linear-gradient(90deg, #3949ab 0%, #1976d2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    transition: background 0.2s, transform 0.1s;
+    margin-right: 8px;
+}
+button:disabled {
+    background: #b0bec5;
+    cursor: not-allowed;
+}
+button:hover:not(:disabled) {
+    background: linear-gradient(90deg, #1976d2 0%, #3949ab 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    background: #f8fafc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+th, td {
+    padding: 14px 10px;
+    text-align: left;
+}
+th {
+    background: #3949ab;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+tr:nth-child(even) {
+    background: #e3e6f0;
+}
+tr:hover {
+    background: #c5cae9;
+    transition: background 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 16px 6px;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    th, td {
+        padding: 10px 6px;
+    }
+    th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #e3e6f0;
+}
+::-webkit-scrollbar-thumb {
+    background: #b0bec5;
+    border-radius: 4px;
+}

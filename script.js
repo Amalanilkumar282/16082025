@@ -95,11 +95,6 @@ async function deleteAllPostsFromFirebase() {
 
 // Utility functions
 function showLoading(show) {
-    const loadingIndicator = document.getElementById('loadingIndicator');
-    if (loadingIndicator) {
-        loadingIndicator.style.display = show ? 'block' : 'none';
-    }
-    
     // Disable/enable buttons during loading
     const buttons = document.querySelectorAll('button');
     buttons.forEach(btn => {
