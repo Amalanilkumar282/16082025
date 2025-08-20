@@ -1,7 +1,7 @@
 // Firebase configuration
 const FIREBASE_URL = 'https://post-management-e07c2-default-rtdb.asia-southeast1.firebasedatabase.app';
 
-// Firebase API functions
+// Firebase API functions.
 async function fetchPosts() {
     try {
         showLoading(true);
